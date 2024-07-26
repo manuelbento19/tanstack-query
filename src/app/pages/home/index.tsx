@@ -1,6 +1,8 @@
 import tanstackLogo from './../../../assets/tanstack.png';
 import { GithubLogo, LinkedinLogo, MagnifyingGlass, Plus } from '@phosphor-icons/react';
 import Table from './partials/table';
+import { UserModal } from '../../components/modal/user';
+import { useState } from 'react';
 
 const SOCIAL_MEDIAS = [
   {
@@ -14,6 +16,10 @@ const SOCIAL_MEDIAS = [
 ]
 
 export function Home() {
+  const [showAddModal,setShowAddModal] = useState(false);
+
+  const openModal = () => setShowAddModal(true);
+  const closeModal = () => setShowAddModal(false);
   
   return (
     <section className="size-full flex flex-col">
@@ -41,7 +47,7 @@ export function Home() {
               <MagnifyingGlass className="absolute left-2 block size-5 text-gray-400"/>
               <input type="text" className="h-10 w-full pr-3 pl-12 text-sm text-slate-600 rounded-md outline-none focus:ring-2" placeholder="Search..." />
             </div>
-            <button className="inline-flex gap-2 items-center justify-center rounded-xl bg-gradient-to-r from-orange-600 to-orange-500 py-3 px-5 text-sm font-medium text-white shadow-xl shadow-gray-400/75 transition-transform duration-200 hover:scale-[1.01]">
+            <button onClick={openModal} className="inline-flex gap-2 items-center justify-center rounded-xl bg-gradient-to-r from-orange-600 to-orange-500 py-3 px-5 text-sm font-medium text-white shadow-xl shadow-gray-400/75 transition-transform duration-200 hover:scale-[1.01]">
               <Plus className='size-4'/>
               New User
             </button>
@@ -49,6 +55,7 @@ export function Home() {
           <Table/>
         </div>
       </main>
+      {showAddModal && <UserModal.Create close={closeModal}/>}
     </section>
   )
 }

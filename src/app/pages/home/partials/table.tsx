@@ -1,0 +1,56 @@
+import { Pencil, TrashSimple } from '@phosphor-icons/react';
+import { UserService } from '../../../../services/user';
+import { useQuery } from '@tanstack/react-query';
+
+export default function Table() {
+    const userService = new UserService();
+    const {data,isPending} = useQuery({queryKey: ["users"],queryFn: async()=> await userService.get()})
+  
+    if(isPending)
+    return (
+        <div className='flex py-4'>
+            <div className='animate-spin size-6 rounded-full border border-b-orange-400'/>
+        </div>
+    )
+    
+    return (
+        <div className="mt-6 overflow-auto rounded-xl shadow">
+            <table className="size-full">
+                <thead>
+                <tr className="bg-gray-700 text-left text-xs font-semibold uppercase tracking-widest text-white">
+                    {["#","FirstName","LastName","E-mail","Created At",""].map(item=> <th key={item} className="px-5 py-3">{item}</th>)}
+                </tr>
+                </thead>
+                <tbody className="text-gray-500 divide-y divide-gray-200/80">
+                {data?.map((item,index)=>(
+                    <tr key={index}>
+                        <td className="border-gray-200 bg-white px-5 py-5 text-sm">
+                            <p className="whitespace-no-wrap">{item.id}</p>
+                        </td>
+                        <td className="border-gray-200 bg-white px-5 py-5 text-sm">
+                            <p className="whitespace-no-wrap">{item.firstName}</p>
+                        </td>
+                        <td className="border-gray-200 bg-white px-5 py-5 text-sm">
+                            <p className="whitespace-no-wrap">{item.lastName}</p>
+                        </td>
+                        <td className="border-gray-200 bg-white px-5 py-5 text-sm">
+                            <p className="whitespace-no-wrap">{item.email}</p>
+                        </td>
+                        <td className="border-gray-200 bg-white px-5 py-5 text-sm">
+                            <p className="whitespace-no-wrap">{(new Date(item.created_at).toLocaleString())}</p>
+                        </td>
+                        <td className="border-gray-200 bg-white px-5 py-5 text-sm flex gap-1 items-center">
+                            <button className='px-2 py-1'>
+                                <Pencil className='size-5'/>
+                            </button>
+                            <button className='px-2 py-1'>
+                                <TrashSimple className='size-5 text-red-500'/>
+                            </button>
+                        </td>
+                    </tr>
+                ))}
+                </tbody>
+            </table>
+        </div>
+    )
+}

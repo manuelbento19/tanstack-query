@@ -1,6 +1,12 @@
+import React from 'react';
+import {QueryClient, QueryClientProvider} from '@tanstack/react-query'
 
-export function ReactQueryProvider() {
+const queryClient = new QueryClient();
+
+export function ReactQueryProvider({children}:React.PropsWithChildren) {
   return (
-    <div>Home Page</div>
+    <QueryClientProvider client={queryClient}>
+      {children}
+    </QueryClientProvider>
   )
 }

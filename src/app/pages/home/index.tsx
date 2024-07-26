@@ -1,8 +1,6 @@
-import { useEffect, useState } from 'react';
-import { UserService } from '../../../services/user';
 import tanstackLogo from './../../../assets/tanstack.png';
 import { GithubLogo, LinkedinLogo, MagnifyingGlass, Plus } from '@phosphor-icons/react';
-import { User } from '../../../utils/types';
+import Table from './partials/table';
 
 const SOCIAL_MEDIAS = [
   {
@@ -16,15 +14,7 @@ const SOCIAL_MEDIAS = [
 ]
 
 export function Home() {
-  const userService = new UserService();
-  const [users,setUsers] = useState<User[]>([]);
-
-  useEffect(()=>{
-    userService.get().then(result=> {
-      setUsers(result);
-    });
-  },[])
-
+  
   return (
     <section className="size-full flex flex-col">
       <header className="w-full shadow-md bg-white">
@@ -56,36 +46,7 @@ export function Home() {
               New User
             </button>
           </header>
-          <div className="mt-6 overflow-auto rounded-xl shadow">
-            <table className="size-full">
-              <thead>
-                <tr className="bg-gray-700 text-left text-xs font-semibold uppercase tracking-widest text-white">
-                  {["#","FirstName","LastName","E-mail",""].map(item=> <th key={item} className="px-5 py-3">{item}</th>)}
-                </tr>
-              </thead>
-              <tbody className="text-gray-500 divide-y divide-gray-200/80">
-                {users?.map((item,index)=>(
-                  <tr key={index}>
-                    <td className="border-gray-200 bg-white px-5 py-5 text-sm">
-                      <p className="whitespace-no-wrap">{item.id}</p>
-                    </td>
-                    <td className="border-gray-200 bg-white px-5 py-5 text-sm">
-                      <p className="whitespace-no-wrap">{item.firstName}</p>
-                    </td>
-                    <td className="border-gray-200 bg-white px-5 py-5 text-sm">
-                      <p className="whitespace-no-wrap">{item.lastName}</p>
-                    </td>
-                    <td className="border-gray-200 bg-white px-5 py-5 text-sm">
-                      <p className="whitespace-no-wrap">{item.email}</p>
-                    </td>
-                    <td className="border-gray-200 bg-white px-5 py-5 text-sm">
-
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+          <Table/>
         </div>
       </main>
     </section>

@@ -17,6 +17,7 @@ const SOCIAL_MEDIAS = [
 
 export function Home() {
   const [showAddModal,setShowAddModal] = useState(false);
+  const [search,setSearch] = useState("");
 
   const openModal = () => setShowAddModal(true);
   const closeModal = () => setShowAddModal(false);
@@ -45,14 +46,14 @@ export function Home() {
           <header className="flex items-center justify-between">
             <div className="relative flex items-center w-full max-w-[250px] rounded-md border shadow-lg"> 
               <MagnifyingGlass className="absolute left-2 block size-5 text-gray-400"/>
-              <input type="text" className="h-10 w-full pr-3 pl-12 text-sm text-slate-600 rounded-md outline-none focus:ring-2" placeholder="Search..." />
+              <input value={search} onChange={e=>setSearch(e.target.value)} type="text" className="h-10 w-full pr-3 pl-12 text-sm text-slate-600 rounded-md outline-none focus:ring-2" placeholder="Search..." />
             </div>
             <button onClick={openModal} className="inline-flex gap-2 items-center justify-center rounded-xl bg-gradient-to-r from-orange-600 to-orange-500 py-3 px-5 text-sm font-medium text-white shadow-xl shadow-gray-400/75 transition-transform duration-200 hover:scale-[1.01]">
               <Plus className='size-4'/>
               New User
             </button>
           </header>
-          <Table/>
+          <Table search={search}/>
         </div>
       </main>
       {showAddModal && <UserModal.Create close={closeModal}/>}

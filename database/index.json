@@ -13,6 +13,13 @@
       "lastName": "Souza Silva",
       "email": "teste@exemplo.us",
       "created_at": "2024-07-26T15:05:30.360Z"
+    },
+    {
+      "id": "c3ed",
+      "firstName": "Jon",
+      "lastName": "Doe",
+      "email": "test@example.us",
+      "created_at": "2024-07-26T15:21:47.462Z"
     }
   ]
 }

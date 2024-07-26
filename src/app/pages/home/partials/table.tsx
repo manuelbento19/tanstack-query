@@ -3,7 +3,11 @@ import { UserService } from '../../../../services/user';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import toast from 'react-hot-toast';
 
-export default function Table() {
+type Props = {
+    search: string;
+}
+
+export default function Table({search}:Props) {
     const userService = new UserService();
     const queryClient = useQueryClient();
 
@@ -22,7 +26,7 @@ export default function Table() {
             <div className='animate-spin size-6 rounded-full border border-b-orange-400'/>
         </div>
     )
-    
+
     return (
         <div className="mt-6 overflow-auto rounded-xl shadow">
             <table className="size-full">
@@ -32,7 +36,7 @@ export default function Table() {
                 </tr>
                 </thead>
                 <tbody className="text-gray-500 divide-y divide-gray-200/80">
-                {data?.map((item,index)=>(
+                {data?.filter(item=>JSON.stringify(item).toLowerCase().includes(search?.toLowerCase() ?? "")).map((item,index)=>(
                     <tr key={item.id}>
                         <td className="border-gray-200 bg-white px-5 py-5 text-sm">
                             <p className="whitespace-no-wrap">{index+1}</p>

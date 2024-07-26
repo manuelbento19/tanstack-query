@@ -1,30 +1,80 @@
-# React + TypeScript + Vite
+<h1 align="center">
+  📸📝<br>Tanstack React Query
+</h1>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+![Resultado final do projeto](./public/Capa.png)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Este projeto é um exemplo prático de como utilizar o Tanstack React Query para gerenciamento de dados e cache em aplicações React. O React Query facilita o gerenciamento de estados relacionados a dados assíncronos, oferecendo uma API simples para busca, cache e sincronização de dados.
 
-## Expanding the ESLint configuration
+## Descrição
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+O **TanstackQuery** é uma aplicação React que demonstra as funcionalidades e práticas recomendadas do Tanstack React Query. A aplicação inclui exemplos de:
 
-- Configure the top-level `parserOptions` property like this:
+- **Consultas (Queries):** Como buscar e cachear dados de uma API.
+- **Mutations:** Como criar, atualizar e deletar dados.
+- **Paginação e Infinito Scroll:** Gerenciamento de dados paginados e carregamento infinito.
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json', './tsconfig.app.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+## Funcionalidades
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+- **Busca de Dados:** Visualize dados obtidos de uma API de exemplo.
+- **Manipulação de Dados:** Adicione, atualize e exclua itens usando React Query.
+
+## Tecnologias Utilizadas
+
+- [React](https://reactjs.org/)
+- [Tanstack React Query](https://tanstack.com/query)
+- [Axios](https://axios-http.com/) (requisições HTTP)
+- [React Router](https://reactrouter.com/) (navegação)
+- [React Hot Toast](https://react-hot-toast.com/) (Toast Notification)
+- [TailwindCSS](https://tailwindcss.com/) (estilo)
+
+## Instalação
+
+1. Clone este repositório:
+   ```bash
+   git clone https://github.com/manuelbento19/tanstack-query.git
+   ```
+
+2. Navegue até o diretório do projeto:
+   ```bash
+   cd tanstack-query
+   ```
+
+3. Instale as dependências:
+   ```bash
+   npm install
+   ```
+
+4. Inicie a aplicação:
+   ```bash
+   npm start
+   ```
+
+5. Acesse a aplicação no seu navegador em [http://localhost:3000](http://localhost:3000).
+
+## Uso
+
+Explore o projeto para entender como o TanstackQuery é integrado e utilizado. As funcionalidades principais estão localizadas em componentes específicos que demonstram as práticas recomendadas para gerenciamento de dados.
+
+## Contribuições
+
+Se você encontrar problemas ou tiver sugestões de melhorias, sinta-se à vontade para abrir uma issue ou enviar um pull request.
+
+## Licença
+
+Este projeto está licenciado sob a [MIT License](LICENSE).
+<h2>👨‍🚀 Autor</h2>
+
+<table>
+  <tr>
+    <td>
+      <a href="https://github.com/manuelbento19">
+        <img src="https://avatars.githubusercontent.com/u/65732773" width="150px;" alt="Foto do Manuel Bento"/><br>
+        <sub>
+          <b>Manuel Bento</b>
+        </sub>
+      </a>
+    </td>
+  </tr>
+</table>

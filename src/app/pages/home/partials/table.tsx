@@ -1,11 +1,21 @@
 import { Pencil, TrashSimple } from '@phosphor-icons/react';
 import { UserService } from '../../../../services/user';
-import { useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import toast from 'react-hot-toast';
 
 export default function Table() {
     const userService = new UserService();
+    const queryClient = useQueryClient();
+
+    const deleteMutation = useMutation({
+        mutationFn: async(id:string) => await userService.delete(id),
+        onSuccess: () => toast.success("Deleted user successfully"),
+        onError: (error:Error) => toast.error(error.message),
+        onSettled: () => queryClient.invalidateQueries({queryKey: ["users"]})
+    })
+    
     const {data,isPending} = useQuery({queryKey: ["users"],queryFn: async()=> await userService.get()})
-  
+    
     if(isPending)
     return (
         <div className='flex py-4'>
@@ -43,7 +53,7 @@ export default function Table() {
                             <button className='px-2 py-1'>
                                 <Pencil className='size-5'/>
                             </button>
-                            <button className='px-2 py-1'>
+                            <button onClick={()=>deleteMutation.mutate(item.id)} className='px-2 py-1'>
                                 <TrashSimple className='size-5 text-red-500'/>
                             </button>
                         </td>

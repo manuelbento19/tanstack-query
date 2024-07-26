@@ -16,4 +16,8 @@ export class UserService {
         });
         return response.data;
     }
+    async delete(id:string){
+        const response = await api.delete<User[]>(`/users/${id}`);
+        return response.data;
+    }
 }

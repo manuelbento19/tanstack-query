@@ -8,19 +8,6 @@
       "created_at": "2024-07-26T13:11:43.705Z"
     },
     {
-      "id": "2ca1",
-      "firstName": "Jon",
-      "lastName": "Doe",
-      "email": "test@example.us"
-    },
-    {
-      "id": "1729",
-      "firstName": "Jon",
-      "lastName": "Doe",
-      "email": "test@example.us",
-      "create_at": "2024-07-26T14:37:26.799Z"
-    },
-    {
       "id": "4b96",
       "firstName": "Jon",
       "lastName": "Doe",
@@ -33,34 +20,6 @@
       "lastName": "Souza Silva",
       "email": "teste@exemplo.us",
       "created_at": "2024-07-26T14:49:03.660Z"
-    },
-    {
-      "id": "cb78",
-      "firstName": "João",
-      "lastName": "Souza Silva",
-      "email": "teste@exemplo.us",
-      "created_at": "2024-07-26T14:49:06.294Z"
-    },
-    {
-      "id": "77d2",
-      "firstName": "Juan Francisco",
-      "lastName": "Souza Silva",
-      "email": "teste@exemplo.us",
-      "created_at": "2024-07-26T14:49:17.573Z"
-    },
-    {
-      "id": "090b",
-      "firstName": "Juan Francisco",
-      "lastName": "Souza Silva",
-      "email": "teste@exemplo.us",
-      "created_at": "2024-07-26T14:49:23.409Z"
-    },
-    {
-      "id": "223d",
-      "firstName": "Juan Francisco",
-      "lastName": "Souza Silva",
-      "email": "teste@exemplo.us",
-      "created_at": "2024-07-26T14:49:31.644Z"
     }
   ]
 }

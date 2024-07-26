@@ -1,6 +1,5 @@
+import { Toaster } from "react-hot-toast";
 
 export function ReactHostToastProvider() {
-  return (
-    <div>Home Page</div>
-  )
+  return <Toaster position="top-center"/>
 }

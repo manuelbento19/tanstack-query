@@ -2,6 +2,7 @@ import { X } from "@phosphor-icons/react";
 import { CreateUserDTO } from "../../../../utils/dtos";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { UserService } from "../../../../services/user";
+import {toast} from "react-hot-toast";
 
 type Props = {
     close: () => void;
@@ -13,13 +14,15 @@ export function Create({close}:Props) {
 
     const mutation = useMutation({
         mutationFn: async (data: CreateUserDTO) => await userService.create(data),
-        onSuccess: () => {},
+        onSuccess: () => {
+            toast.success("User registered successfully");
+            close()
+        },
         onError: (error:Error) => {
-            alert("Erro");
-            console.log(error);
+            toast.error(error.message)
         },
         onSettled: () => {
-            queryClient.invalidateQueries({queryKey:["users"]})
+            queryClient.invalidateQueries({queryKey:["users"]});
         }
     });
 

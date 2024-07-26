@@ -2,7 +2,7 @@ import tanstackLogo from './../../../assets/tanstack.png';
 import { GithubLogo, LinkedinLogo, MagnifyingGlass, Plus } from '@phosphor-icons/react';
 import Table from './partials/table';
 import { UserModal } from '../../components/modal/user';
-import { useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 
 const SOCIAL_MEDIAS = [
   {
@@ -17,11 +17,29 @@ const SOCIAL_MEDIAS = [
 
 export function Home() {
   const [showAddModal,setShowAddModal] = useState(false);
-  const [search,setSearch] = useState("");
+  const [search,setSearch] = useState(()=>{
+    const url = new URL(window.location.href);
+    return url.searchParams.get("search") || "" 
+  })
 
   const openModal = () => setShowAddModal(true);
   const closeModal = () => setShowAddModal(false);
   
+  const onSearchUpdate = (event:ChangeEvent<HTMLInputElement>) => {
+    const value = event.target.value;
+    const url = new URL(window.location.href);
+    
+    if(value){
+      url.searchParams.set("search",value)
+    }
+    else{
+      url.searchParams.delete("search")
+    }
+
+    window.history.pushState({},"",url.toString());
+    setSearch(value);
+  } 
+
   return (
     <section className="size-full flex flex-col">
       <header className="w-full shadow-md bg-white">
@@ -46,7 +64,7 @@ export function Home() {
           <header className="flex items-center justify-between">
             <div className="relative flex items-center w-full max-w-[250px] rounded-md border shadow-lg"> 
               <MagnifyingGlass className="absolute left-2 block size-5 text-gray-400"/>
-              <input value={search} onChange={e=>setSearch(e.target.value)} type="text" className="h-10 w-full pr-3 pl-12 text-sm text-slate-600 rounded-md outline-none focus:ring-2" placeholder="Search..." />
+              <input value={search} onChange={onSearchUpdate} type="text" className="h-10 w-full pr-3 pl-12 text-sm text-slate-600 rounded-md outline-none focus:ring-2" placeholder="Search..." />
             </div>
             <button onClick={openModal} className="inline-flex gap-2 items-center justify-center rounded-xl bg-gradient-to-r from-orange-600 to-orange-500 py-3 px-5 text-sm font-medium text-white shadow-xl shadow-gray-400/75 transition-transform duration-200 hover:scale-[1.01]">
               <Plus className='size-4'/>

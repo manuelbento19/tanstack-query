@@ -33,9 +33,9 @@ export default function Table() {
                 </thead>
                 <tbody className="text-gray-500 divide-y divide-gray-200/80">
                 {data?.map((item,index)=>(
-                    <tr key={index}>
+                    <tr key={item.id}>
                         <td className="border-gray-200 bg-white px-5 py-5 text-sm">
-                            <p className="whitespace-no-wrap">{item.id}</p>
+                            <p className="whitespace-no-wrap">{index+1}</p>
                         </td>
                         <td className="border-gray-200 bg-white px-5 py-5 text-sm">
                             <p className="whitespace-no-wrap">{item.firstName}</p>

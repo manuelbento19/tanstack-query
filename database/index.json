@@ -1,25 +1,18 @@
 {
   "users": [
     {
-      "id": "1",
-      "firstName": "Manuel Bento",
-      "lastName": "Manuel Bento",
-      "email": "manuel@dev.com",
-      "created_at": "2024-07-26T13:11:43.705Z"
-    },
-    {
-      "id": "4b96",
+      "id": "19f9",
       "firstName": "Jon",
       "lastName": "Doe",
       "email": "test@example.us",
-      "created_at": "2024-07-26T14:37:47.955Z"
+      "created_at": "2024-07-26T15:04:48.670Z"
     },
     {
-      "id": "9342",
+      "id": "48b8",
       "firstName": "João",
       "lastName": "Souza Silva",
       "email": "teste@exemplo.us",
-      "created_at": "2024-07-26T14:49:03.660Z"
+      "created_at": "2024-07-26T15:05:30.360Z"
     }
   ]
 }

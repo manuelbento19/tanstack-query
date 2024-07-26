@@ -1,7 +1,7 @@
-export type User = {
+import { z } from "zod";
+import { UserSchema } from "../schemas";
+
+export type User = z.infer<typeof UserSchema> & {
     id: string;
-    firstName: string;
-    lastName: string;
-    email : string;
     created_at: Date;
 }

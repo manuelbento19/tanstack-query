@@ -64,7 +64,7 @@ export function Home() {
                       <p className="whitespace-no-wrap">{"Bento"}</p>
                     </td>
                     <td className="border-gray-200 bg-white px-5 py-5 text-sm">
-                      <p className="whitespace-no-wrap">{"manuel.bento@etic.co.ao"}</p>
+                      <p className="whitespace-no-wrap">{"manuel.bento@developer.com"}</p>
                     </td>
                     <td className="border-gray-200 bg-white px-5 py-5 text-sm">
 

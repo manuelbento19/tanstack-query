@@ -11,6 +11,7 @@
     "server": "json-server --watch database/index.json --port 3000"
   },
   "dependencies": {
+    "@hookform/resolvers": "^3.9.0",
     "@phosphor-icons/react": "^2.1.7",
     "@tanstack/react-query": "^5.51.15",
     "axios": "^1.7.2",

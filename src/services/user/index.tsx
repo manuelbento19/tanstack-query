@@ -1,23 +1,23 @@
 import { api } from "../../api";
-import { CreateUserDTO } from "../../utils/dtos";
-import { User } from "../../utils/types";
+import { UserDTO, UserResponse } from "../../utils/types";
 
 export class UserService {
 
     async get(){
-        const response = await api.get<User[]>("/users");
+        const response = await api.get<UserResponse[]>("/users");
         return response.data;
     }
 
-    async create(data:CreateUserDTO){
-        const response = await api.post<User[]>("/users",{
+    async create(data:UserDTO){
+        const response = await api.post<UserResponse>("/users",{
             ...data,
             created_at: new Date()
         });
         return response.data;
     }
+    
     async delete(id:string){
-        const response = await api.delete<User[]>(`/users/${id}`);
+        const response = await api.delete<UserResponse[]>(`/users/${id}`);
         return response.data;
     }
 }

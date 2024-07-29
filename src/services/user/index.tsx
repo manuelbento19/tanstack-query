@@ -15,6 +15,11 @@ export class UserService {
         });
         return response.data;
     }
+
+    async update(id: string,data:UserDTO){
+        const response = await api.put<UserResponse>(`/users/${id}`,data);
+        return response.data;
+    }
     
     async delete(id:string){
         const response = await api.delete<UserResponse[]>(`/users/${id}`);

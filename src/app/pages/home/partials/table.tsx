@@ -2,6 +2,9 @@ import { Pencil, TrashSimple } from '@phosphor-icons/react';
 import { UserService } from '../../../../services/user';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import toast from 'react-hot-toast';
+import { useState } from 'react';
+import { UserResponse } from '../../../../utils/types';
+import { UserModal } from '../../../components/modal/user';
 
 type Props = {
     search: string;
@@ -10,6 +13,14 @@ type Props = {
 export default function Table({search}:Props) {
     const userService = new UserService();
     const queryClient = useQueryClient();
+    const [user,setUser] = useState<UserResponse>();
+    const [viewModal,setViewModal] = useState(false);
+
+    const selectUser = (data:UserResponse) => {
+        setUser(data)
+        setViewModal(true)
+    }
+    const closeModal = () => setViewModal(false);
 
     const deleteMutation = useMutation({
         mutationFn: async(id:string) => await userService.delete(id),
@@ -37,7 +48,7 @@ export default function Table({search}:Props) {
                 </thead>
                 <tbody className="text-gray-500 divide-y divide-gray-200/80">
                 {data?.filter(item=>JSON.stringify(item).toLowerCase().includes(search?.toLowerCase() ?? "")).map((item,index)=>(
-                    <tr key={item.id}>
+                    <tr onDoubleClick={()=>selectUser(item)} key={item.id}>
                         <td className="border-gray-200 bg-white px-5 py-5 text-sm">
                             <p className="whitespace-no-wrap">{index+1}</p>
                         </td>
@@ -54,7 +65,7 @@ export default function Table({search}:Props) {
                             <p className="whitespace-no-wrap">{(new Date(item.created_at).toLocaleString())}</p>
                         </td>
                         <td className="border-gray-200 bg-white px-5 py-5 text-sm flex gap-1 items-center">
-                            <button className='px-2 py-1'>
+                            <button onClick={()=>selectUser(item)} className='px-2 py-1'>
                                 <Pencil className='size-5'/>
                             </button>
                             <button onClick={()=>deleteMutation.mutate(item.id)} className='px-2 py-1'>
@@ -65,6 +76,7 @@ export default function Table({search}:Props) {
                 ))}
                 </tbody>
             </table>
+            {viewModal && <UserModal.Update user={user!} close={closeModal}/>}
         </div>
     )
 }

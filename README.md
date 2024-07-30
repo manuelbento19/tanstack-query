@@ -54,7 +54,7 @@ O **TanstackQuery** é uma aplicação React que demonstra as funcionalidades e 
    npm start
    ```
 
-5. Acesse a aplicação no seu navegador em [http://localhost:3000](http://localhost:3000).
+5. Acesse a aplicação no seu navegador em [http://localhost:5173](http://localhost:3000).
 
 ## Uso
 

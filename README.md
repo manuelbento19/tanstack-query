@@ -28,6 +28,9 @@ O **TanstackQuery** é uma aplicação React que demonstra as funcionalidades e 
 - [React Router](https://reactrouter.com/) (navegação)
 - [React Hot Toast](https://react-hot-toast.com/) (Toast Notification)
 - [TailwindCSS](https://tailwindcss.com/) (estilo)
+- [Zod](https://zod.dev/) (Schema validation)
+- [React Hook Form](https://react-hook-form.com/) (Form Library)
+- [Phosphor Icons](https://phosphoricons.com/) (Icons)
 
 ## Instalação
 
